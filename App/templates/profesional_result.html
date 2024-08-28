@@ -1,0 +1,37 @@
+<!-- Herencia de 'padre.html'-->
+{% extends "padre.html" %}
+
+{% block ContenidoQueCambia2 %}
+
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <!-- Resultados de búsqueda-->
+                    <p class="lead">Se buscaron los profesionales con la especialidad {{especialidad}}, obteniendo los siguientes resultados:</p>
+                    {% if nombre %}
+                        <ul>
+                            {% for i in nombre %}
+                            <li>
+                                {{i.nombre}} {{i.apellido}}
+                                <br>
+                                Especialidad: {{i.especialidad}}
+                                <br>
+                                Años de experiencia: {{i.anos_de_experiencia}}
+                                <br>
+                                Mail de contacto: {{i.mail}}
+                            </li>
+                            <br>
+                            {% endfor %}
+                        </ul>
+                    <a href="{% url 'ListaProfesionales' %}">Regresar</a>
+                    {% else %}
+                    <p>No hubo coincidencias, inténtelo nuevamente.</p>
+                    <a href="{% url 'ListaProfesionales' %}">Regresar</a> 
+                    {% endif %}                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock ContenidoQueCambia2 %}

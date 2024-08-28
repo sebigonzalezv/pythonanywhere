@@ -1,0 +1,32 @@
+<!-- Herencia de 'padre.html'-->
+{% extends "padre.html" %}
+
+{% block ContenidoQueCambia2 %}
+
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <!--Información en detalle del proyecto-->
+                    <h5>Vista en detalle del proyecto:</h>
+                    <br>
+                    <h4>{{proyecto.nombre}}</h4>
+                    <br>
+                    {% if proyecto.imagen.url %}
+                        <img src="{{proyecto.imagen.url}}" alt="proyectos" width="650px">
+                    {% else %}
+                        <p>El proyecto seleccionado no tiene imagen.</p>
+                    {% endif %}
+                    <br>
+                    <br>
+                    <h6>Ubicación: {{proyecto.ubicacion}}</h6>
+                    <h6>Tipo: {{proyecto.tipo}}</h6>
+                    <h6>Fecha de ejecución: {{proyecto.fecha_ejecucion}}</h6>   
+                    <br>
+                    <a href="{% url 'ListaProyectos' %}">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock ContenidoQueCambia2 %}

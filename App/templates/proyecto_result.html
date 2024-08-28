@@ -1,0 +1,37 @@
+<!-- Herencia de 'padre.html'-->
+{% extends "padre.html" %}
+
+{% block ContenidoQueCambia2 %}
+
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <!-- Resultados de búsqueda-->
+                    <p class="lead">Se buscaron los proyectos con el nombre {{nombre}}, obteniendo los siguientes resultados:</p>
+                    {% if ubicacion %}
+                        <ul>
+                            {% for i in ubicacion %}
+                            <li>
+                                {{i.nombre}}
+                                <br>
+                                Ubicación: {{i.ubicacion}}
+                                <br>
+                                Tipo: {{i.tipo}}
+                                <br>
+                                Fecha de ejecución: {{i.fecha_ejecucion}}
+                            </li>
+                            <br>
+                            {% endfor %}
+                        </ul>
+                    <a href="{% url 'ListaProyectos' %}">Regresar</a>
+                    {% else %}
+                    <p>No hubo coincidencias, inténtelo nuevamente.</p>
+                    <a href="{% url 'ListaProyectos' %}">Regresar</a> 
+                    {% endif %}                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock ContenidoQueCambia2 %}
